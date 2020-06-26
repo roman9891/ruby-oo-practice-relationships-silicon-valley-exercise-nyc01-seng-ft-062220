@@ -17,4 +17,6 @@ class VentureCapitalist
             venture_capitalist_object.total_worth > 1000000
         end
     end
+
 end
+dummy_v = VentureCapitalist.new("Roman", 1000000)

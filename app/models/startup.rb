@@ -28,8 +28,26 @@ class Startup
         end
     end
 
-
     def self.all
         @@all
     end
+
+    def sign_contract(venture_capitalist, type, ammount)
+        FundingRound.new(self, venture_capitalist, type, ammount)
+    end
+
+    def num_funding_rounds
+       total_rounds = FundingRound.all.select do |funding|
+            funding.startup == self
+        end
+        total_rounds.count
+    end
+
+
+
+
+
+
 end
+
+dummy_s = Startup.new("Farzads", "Happyhour", "flatiron.com") 
