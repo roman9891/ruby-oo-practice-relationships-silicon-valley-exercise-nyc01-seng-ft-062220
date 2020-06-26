@@ -43,11 +43,20 @@ class Startup
         total_rounds.count
     end
 
+    def total_funds
+        FundingRound.all.sum do |funding_round_object|
+            funding_round_object.investment
+        end
+    end
 
-
-
-
-
+    def investors
+        our_funding_rounds = FundingRound.all.select do |funding_round_object|
+            funding_round_object.startup == self
+        end
+        our_funding_rounds.map do |each_fundinground_object|
+            each_fundinground_object.venture_capitalist
+        end
+    end
 end
 
 dummy_s = Startup.new("Farzads", "Happyhour", "flatiron.com") 
